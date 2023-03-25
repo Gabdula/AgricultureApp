@@ -1,13 +1,17 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AgricultureApp.Pages
 {
@@ -87,11 +91,16 @@ namespace AgricultureApp.Pages
             string pass;
             string email;
 
+            Bitmap bitmap;
             try
             {
                 login = Convert.ToString(table.Rows[0][2]);
                 pass = Convert.ToString(table.Rows[0][4]);
                 email = Convert.ToString(table.Rows[0][3]);
+
+                //Выгрузка изображения из бд
+                var temp = new MemoryStream((byte[])table.Rows[0][6]);
+                bitmap = new Bitmap(System.Drawing.Image.FromStream(temp));
             }
             catch (Exception)
             {
@@ -102,7 +111,7 @@ namespace AgricultureApp.Pages
             if (login == loginUser || email == loginUser  && pass == passUser)
             { 
                 string role = Convert.ToString(table.Rows[0][5]);
-                preloadPage.SetInfoUser(role, login);
+                preloadPage.SetInfoUser(role, login, bitmap);
                 preloadPage.OnMenu();
                 preloadPage.GotoApp();
             }

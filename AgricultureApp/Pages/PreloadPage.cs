@@ -22,7 +22,7 @@ namespace AgricultureApp
         bool userProfileExpand;
         string roleUser;
         string userName;
-        string userImage;
+        System.Drawing.Bitmap userImage;
         bool isAdmin = false;
         public PreloadPage()
         {
@@ -127,68 +127,7 @@ namespace AgricultureApp
             {
                 graph.DrawPath(penBorder, roundPath);
             }
-        }
-        /*private struct FormBoundsColors
-        {
-            public Color TopLeftColor;
-            public Color TopRightColor;
-            public Color BottomLeftColor;
-            public Color BottomRightColor;
-        }
-        private FormBoundsColors GetFormBoundsColors()
-        {
-            var fbColor = new FormBoundsColors();
-            using (var bmp = new Bitmap(1, 1))
-            using (Graphics graph = Graphics.FromImage(bmp))
-            {
-                Rectangle rectBmp = new Rectangle(0, 0, 1, 1);
-                //Top Left
-                rectBmp.X = this.Bounds.X - 1;
-                rectBmp.Y = this.Bounds.Y;
-                graph.CopyFromScreen(rectBmp.Location, Point.Empty, rectBmp.Size);
-                fbColor.TopLeftColor = bmp.GetPixel(0, 0);
-                //Top Right
-                rectBmp.X = this.Bounds.Right;
-                rectBmp.Y = this.Bounds.Y;
-                graph.CopyFromScreen(rectBmp.Location, Point.Empty, rectBmp.Size);
-                fbColor.TopRightColor = bmp.GetPixel(0, 0);
-                //Bottom Left
-                rectBmp.X = this.Bounds.X;
-                rectBmp.Y = this.Bounds.Bottom;
-                graph.CopyFromScreen(rectBmp.Location, Point.Empty, rectBmp.Size);
-                fbColor.BottomLeftColor = bmp.GetPixel(0, 0);
-                //Bottom Right
-                rectBmp.X = this.Bounds.Right;
-                rectBmp.Y = this.Bounds.Bottom;
-                graph.CopyFromScreen(rectBmp.Location, Point.Empty, rectBmp.Size);
-                fbColor.BottomRightColor = bmp.GetPixel(0, 0);
-            }
-            return fbColor;
-        }*/
-
-        //Event Methods
-        /*protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            //-> SMOOTH OUTER BORDER
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            Rectangle rectForm = this.ClientRectangle;
-            int mWidht = rectForm.Width / 2;
-            int mHeight = rectForm.Height / 2;
-            var fbColors = GetFormBoundsColors();
-            //Top Left
-            DrawPath(rectForm, e.Graphics, fbColors.TopLeftColor);
-            //Top Right
-            Rectangle rectTopRight = new Rectangle(mWidht, rectForm.Y, mWidht, mHeight);
-            DrawPath(rectTopRight, e.Graphics, fbColors.TopRightColor);
-            //Bottom Left
-            Rectangle rectBottomLeft = new Rectangle(rectForm.X, rectForm.X + mHeight, mWidht, mHeight);
-            DrawPath(rectBottomLeft, e.Graphics, fbColors.BottomLeftColor);
-            //Bottom Right
-            Rectangle rectBottomRight = new Rectangle(mWidht, rectForm.Y + mHeight, mWidht, mHeight);
-            DrawPath(rectBottomRight, e.Graphics, fbColors.BottomRightColor);
-            //-> SET ROUNDED REGION AND BORDER
-            FormRegionAndBorder(this, borderRadius, e.Graphics, borderColor, borderSize);
-        }*/
+        }      
         private void PreloadPage_Paint(object sender, PaintEventArgs e)
         {
             FormRegionAndBorder(this, borderRadius, e.Graphics, borderColor, borderSize);
@@ -272,7 +211,7 @@ namespace AgricultureApp
         }
         #endregion
 
-
+        //Анимация открытия и закрытия меню профиля
         #region ProfileMenu
         private void UserProfileTimer_Tick(object sender, EventArgs e)
         {
@@ -421,14 +360,20 @@ namespace AgricultureApp
             PanelForm(new HomePage(this));
             ChoisePage("homepage");
         }
-        public void SetInfoUser(string role, string name)
+        public void SetInfoUser(string role, string name, Bitmap userimage)
         { 
             roleUser = role;
             userName = name;
+            userImage = userimage;
+
             roleText.Text = "Role: " + role;
-            if (userImage == string.Empty) 
+            if (userImage == null) 
             {
                 userProfileImage.Image = Properties.Resources.defaultUserImage;
+            }
+            else 
+            { 
+                userProfileImage.Image = userImage;
             }
         }
         #endregion
