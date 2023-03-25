@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DF762C4-A6D8-426F-A067-411D7C95187E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AgricultureApp</RootNamespace>
+    <AssemblyName>AgricultureApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.2.6\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.2.6\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.32.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.32.1\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\CurculPictureBox\CurculPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CurculPictureBox\CurculPictureBox.Designer.cs">
+      <DependentUpon>CurculPictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ToggleButton\ToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database.cs" />
+    <Compile Include="Pages\AboutPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\AboutPage.Designer.cs">
+      <DependentUpon>AboutPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GroundPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\GroundPage.Designer.cs">
+      <DependentUpon>GroundPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GroundPageADMIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\GroundPageADMIN.Designer.cs">
+      <DependentUpon>GroundPageADMIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\HomePage.Designer.cs">
+      <DependentUpon>HomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\LoginPage.Designer.cs">
+      <DependentUpon>LoginPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PlantsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\PlantsPage.Designer.cs">
+      <DependentUpon>PlantsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PlantsPageADMIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\PlantsPageADMIN.Designer.cs">
+      <DependentUpon>PlantsPageADMIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PreloadPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\PreloadPage.Designer.cs">
+      <DependentUpon>PreloadPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegestrationPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\RegestrationPage.Designer.cs">
+      <DependentUpon>RegestrationPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SowingPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\SowingPage.Designer.cs">
+      <DependentUpon>SowingPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SowingPageADMIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\SowingPageADMIN.Designer.cs">
+      <DependentUpon>SowingPageADMIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UsersPageADMIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\UsersPageADMIN.Designer.cs">
+      <DependentUpon>UsersPageADMIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorkersPageADMIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\WorkersPageADMIN.Designer.cs">
+      <DependentUpon>WorkersPageADMIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\WorkersPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\WorkersPage.Designer.cs">
+      <DependentUpon>WorkersPage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Pages\AboutPage.resx">
+      <DependentUpon>AboutPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\GroundPage.resx">
+      <DependentUpon>GroundPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\GroundPageADMIN.resx">
+      <DependentUpon>GroundPageADMIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\HomePage.resx">
+      <DependentUpon>HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\LoginPage.resx">
+      <DependentUpon>LoginPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PlantsPage.resx">
+      <DependentUpon>PlantsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PlantsPageADMIN.resx">
+      <DependentUpon>PlantsPageADMIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PreloadPage.resx">
+      <DependentUpon>PreloadPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\RegestrationPage.resx">
+      <DependentUpon>RegestrationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SowingPage.resx">
+      <DependentUpon>SowingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SowingPageADMIN.resx">
+      <DependentUpon>SowingPageADMIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UsersPageADMIN.resx">
+      <DependentUpon>UsersPageADMIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\WorkersPageADMIN.resx">
+      <DependentUpon>WorkersPageADMIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Pages\WorkersPage.resx">
+      <DependentUpon>WorkersPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\workers-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plants-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sowing-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-form-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\collapse-form-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-selected-icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-selected-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\workers-selected-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about-selected-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground-selected-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plants-selected-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sowing-selected-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Homepage-Leaf2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Homepage-Worker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Homepage-Grounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Homepage-People.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Homepage-Pumpkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Homepage-Wheat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo3-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-Username.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-Password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-Fullname.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-Email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users-selected-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\defaultUserImage.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
