@@ -113,6 +113,16 @@ namespace AgricultureApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ground {
+            get {
+                object obj = ResourceManager.GetObject("ground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ground_icon {
             get {
                 object obj = ResourceManager.GetObject("ground-icon", resourceCulture);
@@ -283,6 +293,16 @@ namespace AgricultureApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap plants {
+            get {
+                object obj = ResourceManager.GetObject("plants", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plants_icon {
             get {
                 object obj = ResourceManager.GetObject("plants-icon", resourceCulture);
@@ -296,6 +316,16 @@ namespace AgricultureApp.Properties {
         internal static System.Drawing.Bitmap plants_selected_icon {
             get {
                 object obj = ResourceManager.GetObject("plants_selected_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sowing {
+            get {
+                object obj = ResourceManager.GetObject("sowing", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,6 +353,16 @@ namespace AgricultureApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap users {
+            get {
+                object obj = ResourceManager.GetObject("users", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap users_icon {
             get {
                 object obj = ResourceManager.GetObject("users-icon", resourceCulture);
@@ -336,6 +376,16 @@ namespace AgricultureApp.Properties {
         internal static System.Drawing.Bitmap users_selected_icon {
             get {
                 object obj = ResourceManager.GetObject("users_selected_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap worker {
+            get {
+                object obj = ResourceManager.GetObject("worker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

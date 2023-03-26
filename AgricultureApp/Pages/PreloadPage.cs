@@ -151,7 +151,7 @@ namespace AgricultureApp
             this.Invalidate();
         }
 
-        static void SetRoundedShape(Control control, int radius)
+        public void SetRoundedShape(Control control, int radius)
         {
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
             path.AddLine(radius, 0, control.Width - radius, 0);
@@ -345,7 +345,11 @@ namespace AgricultureApp
             Separator.Visible = true;
             userProfile.Visible = true;
             usernameText.Text = userName;
-            if (roleUser == "worker") panelAdminSettings.Visible = true;
+            if (roleUser == "worker") 
+            {
+                panelAdminSettings.Visible = true;
+                adminSettingsOn.Checked = true;
+            }
         }
         public void GotoRegestrationPage() 
         {
@@ -389,6 +393,10 @@ namespace AgricultureApp
         {
             PanelForm(new HomePage(this));
             ChoisePage("homepage");
+            if (userProfileExpand)
+            {
+                userProfileTimer.Start();
+            }
         }
 
         private void Workersbtn_Click(object sender, EventArgs e)
@@ -402,6 +410,10 @@ namespace AgricultureApp
             { 
                 PanelForm(new WorkersPage(this));
                 ChoisePage("workerspage");
+            }
+            if (userProfileExpand)
+            {
+                userProfileTimer.Start();
             }
         }
 
@@ -417,6 +429,10 @@ namespace AgricultureApp
                 PanelForm(new GroundPage(this));
                 ChoisePage("groundpage");
             }
+            if (userProfileExpand)
+            {
+                userProfileTimer.Start();
+            }
         }
 
         public void Plantsbtn_Click(object sender, EventArgs e)
@@ -430,6 +446,10 @@ namespace AgricultureApp
             {
                 PanelForm(new PlantsPage(this));
                 ChoisePage("plantspage");
+            }
+            if (userProfileExpand)
+            {
+                userProfileTimer.Start();
             }
         }
 
@@ -445,16 +465,28 @@ namespace AgricultureApp
                 PanelForm(new SowingPage(this));
                 ChoisePage("sowingpage");
             }
+            if (userProfileExpand)
+            {
+                userProfileTimer.Start();
+            }
         }
         private void Usersbtn_Click(object sender, EventArgs e)
         {
             PanelForm(new UsersPageADMIN(this));
             ChoisePage("userspage");
+            if (userProfileExpand)
+            {
+                userProfileTimer.Start();
+            }
         }
         private void Aboutbtn_Click(object sender, EventArgs e)
         {
             PanelForm(new AboutPage(this));
             ChoisePage("aboutpage");
+            if (userProfileExpand)
+            {
+                userProfileTimer.Start();
+            }
         }
         private void Logoutbtn_Click(object sender, EventArgs e)
         {

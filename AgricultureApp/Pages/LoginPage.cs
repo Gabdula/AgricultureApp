@@ -97,15 +97,21 @@ namespace AgricultureApp.Pages
                 login = Convert.ToString(table.Rows[0][2]);
                 pass = Convert.ToString(table.Rows[0][4]);
                 email = Convert.ToString(table.Rows[0][3]);
-
-                //Выгрузка изображения из бд
-                var temp = new MemoryStream((byte[])table.Rows[0][6]);
-                bitmap = new Bitmap(System.Drawing.Image.FromStream(temp));
             }
             catch (Exception)
             {
                 MessageBox.Show("Неправильный Логин / Пароль или аккаунта не существует.");
                 return;
+            }
+            try
+            {
+                //Выгрузка изображения из бд
+                var imageByteArray = new MemoryStream((byte[])table.Rows[0][6]);
+                bitmap = new Bitmap(System.Drawing.Image.FromStream(imageByteArray));
+            }
+            catch (Exception)
+            {
+                bitmap = null;
             }
 
             if (login == loginUser || email == loginUser  && pass == passUser)

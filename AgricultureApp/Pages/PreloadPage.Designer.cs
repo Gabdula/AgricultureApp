@@ -61,16 +61,16 @@
             this.Collapsebtn = new System.Windows.Forms.Button();
             this.Exitbtn = new System.Windows.Forms.Button();
             this.panelAdminSettings = new System.Windows.Forms.Panel();
+            this.adminSettingsOn = new AgricultureApp.Components.ToggleButton.ToggleButton();
             this.Administrator_settings = new System.Windows.Forms.Label();
             this.userProfile = new System.Windows.Forms.Panel();
             this.userprofileFrame = new System.Windows.Forms.FlowLayoutPanel();
             this.userprofileContainer = new System.Windows.Forms.Panel();
             this.roleText = new System.Windows.Forms.Label();
             this.usernameText = new System.Windows.Forms.Label();
+            this.userProfileImage = new AgricultureApp.Components.CurculPictureBox.CurculPictureBox();
             this.userProfileTimer = new System.Windows.Forms.Timer(this.components);
             this.appContainer = new System.Windows.Forms.Panel();
-            this.adminSettingsOn = new AgricultureApp.Components.ToggleButton.ToggleButton();
-            this.userProfileImage = new AgricultureApp.Components.CurculPictureBox.CurculPictureBox();
             this.sidebarPanel.SuspendLayout();
             this.sidebarContainer.SuspendLayout();
             this.sidebarHeader.SuspendLayout();
@@ -89,8 +89,8 @@
             this.userProfile.SuspendLayout();
             this.userprofileFrame.SuspendLayout();
             this.userprofileContainer.SuspendLayout();
-            this.appContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userProfileImage)).BeginInit();
+            this.appContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // contantPanel
@@ -98,7 +98,7 @@
             this.contantPanel.BackColor = System.Drawing.SystemColors.Control;
             this.contantPanel.Location = new System.Drawing.Point(78, 77);
             this.contantPanel.Name = "contantPanel";
-            this.contantPanel.Size = new System.Drawing.Size(1190, 603);
+            this.contantPanel.Size = new System.Drawing.Size(1200, 720);
             this.contantPanel.TabIndex = 1;
             // 
             // Separator
@@ -452,6 +452,21 @@
             this.panelAdminSettings.Size = new System.Drawing.Size(157, 28);
             this.panelAdminSettings.TabIndex = 0;
             // 
+            // adminSettingsOn
+            // 
+            this.adminSettingsOn.AutoSize = true;
+            this.adminSettingsOn.Location = new System.Drawing.Point(106, 3);
+            this.adminSettingsOn.MinimumSize = new System.Drawing.Size(45, 22);
+            this.adminSettingsOn.Name = "adminSettingsOn";
+            this.adminSettingsOn.OffBackColor = System.Drawing.Color.Gray;
+            this.adminSettingsOn.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.adminSettingsOn.OnBackColor = System.Drawing.Color.LimeGreen;
+            this.adminSettingsOn.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.adminSettingsOn.Size = new System.Drawing.Size(45, 22);
+            this.adminSettingsOn.TabIndex = 0;
+            this.adminSettingsOn.UseVisualStyleBackColor = true;
+            this.adminSettingsOn.CheckedChanged += new System.EventHandler(this.AdminSettingsOn_CheckedChanged);
+            // 
             // Administrator_settings
             // 
             this.Administrator_settings.AutoSize = true;
@@ -516,6 +531,23 @@
             this.usernameText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.usernameText.Click += new System.EventHandler(this.UsernameText_Click);
             // 
+            // userProfileImage
+            // 
+            this.userProfileImage.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.userProfileImage.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.userProfileImage.BorderColor2 = System.Drawing.SystemColors.ActiveBorder;
+            this.userProfileImage.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.userProfileImage.BorderSize = 2;
+            this.userProfileImage.GradientAngle = 50F;
+            this.userProfileImage.Image = global::AgricultureApp.Properties.Resources.defaultUserImage;
+            this.userProfileImage.Location = new System.Drawing.Point(160, 0);
+            this.userProfileImage.Name = "userProfileImage";
+            this.userProfileImage.Size = new System.Drawing.Size(40, 40);
+            this.userProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.userProfileImage.TabIndex = 0;
+            this.userProfileImage.TabStop = false;
+            this.userProfileImage.Click += new System.EventHandler(this.UserProfileImage_Click);
+            // 
             // userProfileTimer
             // 
             this.userProfileTimer.Interval = 5;
@@ -537,38 +569,6 @@
             this.appContainer.TabIndex = 6;
             this.appContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.appContainer_Paint);
             this.appContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AppContainer_MouseDown);
-            // 
-            // adminSettingsOn
-            // 
-            this.adminSettingsOn.AutoSize = true;
-            this.adminSettingsOn.Location = new System.Drawing.Point(106, 3);
-            this.adminSettingsOn.MinimumSize = new System.Drawing.Size(45, 22);
-            this.adminSettingsOn.Name = "adminSettingsOn";
-            this.adminSettingsOn.OffBackColor = System.Drawing.Color.Gray;
-            this.adminSettingsOn.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.adminSettingsOn.OnBackColor = System.Drawing.Color.LimeGreen;
-            this.adminSettingsOn.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.adminSettingsOn.Size = new System.Drawing.Size(45, 22);
-            this.adminSettingsOn.TabIndex = 0;
-            this.adminSettingsOn.UseVisualStyleBackColor = true;
-            this.adminSettingsOn.CheckedChanged += new System.EventHandler(this.AdminSettingsOn_CheckedChanged);
-            // 
-            // userProfileImage
-            // 
-            this.userProfileImage.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.userProfileImage.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.userProfileImage.BorderColor2 = System.Drawing.SystemColors.ActiveBorder;
-            this.userProfileImage.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.userProfileImage.BorderSize = 2;
-            this.userProfileImage.GradientAngle = 50F;
-            this.userProfileImage.Image = global::AgricultureApp.Properties.Resources.defaultUserImage;
-            this.userProfileImage.Location = new System.Drawing.Point(160, 0);
-            this.userProfileImage.Name = "userProfileImage";
-            this.userProfileImage.Size = new System.Drawing.Size(40, 40);
-            this.userProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.userProfileImage.TabIndex = 0;
-            this.userProfileImage.TabStop = false;
-            this.userProfileImage.Click += new System.EventHandler(this.UserProfileImage_Click);
             // 
             // PreloadPage
             // 
@@ -607,8 +607,8 @@
             this.userProfile.ResumeLayout(false);
             this.userprofileFrame.ResumeLayout(false);
             this.userprofileContainer.ResumeLayout(false);
-            this.appContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userProfileImage)).EndInit();
+            this.appContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
