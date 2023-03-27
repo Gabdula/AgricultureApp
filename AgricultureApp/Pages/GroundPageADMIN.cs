@@ -58,7 +58,7 @@ namespace AgricultureApp.Pages
             dataGridView1.Columns[1].HeaderText = "Ground Number (№)";
             dataGridView1.Columns[2].HeaderText = "Land Area (ha)";
         }
-        private void UpdateData()
+        private void UpdateDataWorker()
         {
             try
             {
@@ -141,12 +141,10 @@ namespace AgricultureApp.Pages
                     row["land_area"] = Row2;
 
                     dataSet.Tables["Grounds"].Rows.Add(row);
-
                     adapter.Update(dataSet, "Grounds");
-
                     tabCommands.SelectedIndex = 0;
 
-                    UpdateData();
+                    UpdateDataWorker();
                 }
             }
             else
@@ -159,11 +157,11 @@ namespace AgricultureApp.Pages
                     command.Parameters.Add("@indexDeletedRow", MySqlDbType.Int32).Value =
                     dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["grounds_id"].Value;
 
+
                     adapter.SelectCommand = command;
-                    adapter.Fill(dataSet, "Grounds");
+                    adapter.Update(dataSet, "Workers");
                     dataSet.Clear();
                     LoadData();
-
                     tabCommands.SelectedIndex = 0;
                 }
             }
@@ -200,7 +198,7 @@ namespace AgricultureApp.Pages
                 MessageBox.Show("Недопустимый символ, Запятая, воспользуйтесь для поиска Точкой!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            MySqlCommand command = new MySqlCommand("Select * FROM grounds WHERE grounds_id LIKE " + textSearch.Text + " OR number_grounds LIKE " + textSearch.Text + " OR land_area LIKE " + textSearch.Text + "", db.GetConnection());
+            MySqlCommand command = new MySqlCommand("Select * FROM grounds WHERE grounds_id LIKE '%" + textSearch.Text + "%' OR number_grounds LIKE '%" + textSearch.Text + "%' OR land_area LIKE '%" + textSearch.Text + "%'", db.GetConnection());
 
             adapter.SelectCommand = command;
             table = new DataTable();

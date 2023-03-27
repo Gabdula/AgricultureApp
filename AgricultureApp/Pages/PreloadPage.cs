@@ -399,7 +399,7 @@ namespace AgricultureApp
             }
         }
 
-        private void Workersbtn_Click(object sender, EventArgs e)
+        public void Workersbtn_Click(object sender, EventArgs e)
         {
             if (isAdmin)
             {
