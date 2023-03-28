@@ -453,7 +453,7 @@ namespace AgricultureApp
             }
         }
 
-        private void Sowingbtn_Click(object sender, EventArgs e)
+        public void Sowingbtn_Click(object sender, EventArgs e)
         {
             if (isAdmin)
             {

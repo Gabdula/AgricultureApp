@@ -32,6 +32,9 @@ namespace AgricultureApp.Pages
         MySqlCommandBuilder builder = new MySqlCommandBuilder();
         DataSet dataSet = new DataSet();
         private DataGridViewCellEventArgs e;
+        Bitmap bitmap;
+        byte[] imageToBase;
+        bool isThereAPicture = false;
 
         private void LoadData()
         {
@@ -79,7 +82,6 @@ namespace AgricultureApp.Pages
             dataGridViewPlants.Columns["image_plant"].Visible= false;
             DataGridViewPlants_CellClick(this, e);
         }
-
         private void DataGridViewPlants_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -128,10 +130,6 @@ namespace AgricultureApp.Pages
         string Row3; //Growing time
         int Row4; //Yield plant
         byte[] Row5; //Image plant
-
-        Bitmap bitmap;
-        byte[] imageToBase;
-        bool isThereAPicture = false;
 
         private void RowAddbtn_Click(object sender, EventArgs e)
         {
@@ -225,9 +223,8 @@ namespace AgricultureApp.Pages
                     command.Parameters.Add("@indexEditingRow", MySqlDbType.Int32).Value =
                     Convert.ToInt32(dataGridViewPlants.Rows[dataGridViewPlants.CurrentCell.RowIndex].Cells["plant_id"].Value);
 
-
                     adapter.SelectCommand = command;
-                    adapter.Fill(dataSet, "Workers");
+                    adapter.Fill(dataSet, "Plants");
                     dataSet.Clear();
                     LoadData();
                     tabCommands.SelectedIndex = 0;

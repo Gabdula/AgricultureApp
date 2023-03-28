@@ -76,21 +76,6 @@ namespace AgricultureApp.Pages
             dataGridViewWorker.Columns[7].HeaderText = "Salary (rub)";
             dataGridViewWorker.Columns[8].HeaderText = "Ground Id";
         }
-        private void UpdateData()
-        {
-            try
-            {
-                dataSet.Tables["Workers"].Clear();
-
-                adapter.Fill(dataSet, "Workers");
-
-                dataGridViewWorker.DataSource = dataSet.Tables["Workers"];
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void WorkersPageADMIN_Load(object sender, EventArgs e)
         {
             db.OpenConnection();

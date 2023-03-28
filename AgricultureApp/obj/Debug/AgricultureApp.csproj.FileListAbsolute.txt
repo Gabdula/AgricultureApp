@@ -44,3 +44,8 @@ D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\obj\Debug\Agricultu
 D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\obj\Debug\AgricultureApp.Pages.PlantsPageADMIN.resources
 D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\obj\Debug\AgricultureApp.Pages.SowingPageADMIN.resources
 D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\obj\Debug\AgricultureApp.Pages.UsersPageADMIN.resources
+D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.dll
+D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.dll
+D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.dll
+D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\bin\Debug\Bunifu.Licensing.dll
+D:\Study\Csharp_Alena\AgricultureAppBD\Client\AgricultureApp\obj\Debug\AgricultureApp.exe.licenses
