@@ -53,6 +53,18 @@ namespace AgricultureApp.Pages
             preloadPage.SetRoundedShape(namePanel, 10);
             preloadPage.SetRoundedShape(surnameContainer, 10);
             preloadPage.SetRoundedShape(surnamePanel, 10);
+            preloadPage.SetRoundedShape(fathernameContainer, 10);
+            preloadPage.SetRoundedShape(fathernamePanel, 10);
+            preloadPage.SetRoundedShape(ageContainer, 10);
+            preloadPage.SetRoundedShape(agePanel, 10);
+            preloadPage.SetRoundedShape(experienceContainer, 10);
+            preloadPage.SetRoundedShape(experiencePanel, 10);
+            preloadPage.SetRoundedShape(jobtitleContainer, 10);
+            preloadPage.SetRoundedShape(jobtitlePanel, 10);
+            preloadPage.SetRoundedShape(salaryContainer, 10);
+            preloadPage.SetRoundedShape(salaryPanel, 10);
+            preloadPage.SetRoundedShape(groundidContainer, 10);
+            preloadPage.SetRoundedShape(groundidPanel, 10);
 
             dataGridViewWorker.Columns[0].HeaderText = "Worker Id";
             dataGridViewWorker.Columns[1].HeaderText = "Name";

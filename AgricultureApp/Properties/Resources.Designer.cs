@@ -293,6 +293,16 @@ namespace AgricultureApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap noimage {
+            get {
+                object obj = ResourceManager.GetObject("noimage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plants {
             get {
                 object obj = ResourceManager.GetObject("plants", resourceCulture);
