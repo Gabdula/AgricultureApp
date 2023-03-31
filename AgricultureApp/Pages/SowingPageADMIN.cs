@@ -11,7 +11,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 
 namespace AgricultureApp.Pages
 {
@@ -28,8 +28,6 @@ namespace AgricultureApp.Pages
         //Выбор между сохранить или добавить
         bool isInsert;
         Bitmap bitmap;
-        byte[] imageToBase;
-        bool isThereAPicture = false;
         private DataGridViewCellEventArgs e;
 
         //Подключение бд
@@ -39,6 +37,7 @@ namespace AgricultureApp.Pages
         MySqlDataAdapter loadPlantTitleAdapter = new MySqlDataAdapter();
 
         DataTable table = new DataTable();
+        DataTable dt = new DataTable();
         DataSet dataSet = new DataSet();
         #endregion
 
@@ -70,6 +69,13 @@ namespace AgricultureApp.Pages
             dataGridViewSowing.Columns["plant_id"].Visible = false;
 
             SetColumnsName();
+            SetRoundShape();
+        }
+        private void SetRoundShape()
+        {
+            preloadPage.SetRoundedShape(dataGridViewSowing, 10);
+            preloadPage.SetRoundedShape(imageplantContainer, 10);
+            preloadPage.SetRoundedShape(imagePlant, 10);
         }
         //Заполняем combobox
         private void FillCombobox()
@@ -110,7 +116,7 @@ namespace AgricultureApp.Pages
             }
             //Название над картинкой
             plant.Text = Convert.ToString(dataGridViewSowing.Rows[dataGridViewSowing.CurrentCell.RowIndex].Cells["title_plant"].Value);
-            /*MessageBox.Show();*/
+            plantimageEdit.Image = bitmap;
         }
         //Открытие подключение к бд
         private void SowingPageADMIN_Load(object sender, EventArgs e)
@@ -128,16 +134,20 @@ namespace AgricultureApp.Pages
         {
             if (MessageBox.Show("Удалить эту строку?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MySqlCommand command = new MySqlCommand("DELETE FROM sowing WHERE sowing_id = @indexDeletedRow", db.GetConnection());
-                command.Parameters.Add("@indexDeletedRow", MySqlDbType.Int32).Value =
-                    dataGridViewSowing.Rows[dataGridViewSowing.CurrentCell.RowIndex].Cells["sowing_id"].Value;
-
-                loadDataAdapter.SelectCommand = command;
-                loadDataAdapter.Fill(dataSet, "Sowing");
-                dataSet.Clear();
-                LoadData();
+                DeleteRow();
             }
 
+        }
+        private void DeleteRow()
+        {
+            MySqlCommand command = new MySqlCommand("DELETE FROM sowing WHERE sowing_id = @indexDeletedRow", db.GetConnection());
+            command.Parameters.Add("@indexDeletedRow", MySqlDbType.Int32).Value =
+                dataGridViewSowing.Rows[dataGridViewSowing.CurrentCell.RowIndex].Cells["sowing_id"].Value;
+
+            loadDataAdapter.SelectCommand = command;
+            loadDataAdapter.Fill(dataSet, "Sowing");
+            dataSet.Clear();
+            LoadData();
         }
         #endregion
 
@@ -184,6 +194,7 @@ namespace AgricultureApp.Pages
                 MessageBox.Show("Дата посадки не может быть позже чем дата сбора!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             //Проверяем правильные ли форматы введённых данных
             try
             {
@@ -198,33 +209,13 @@ namespace AgricultureApp.Pages
                 MessageBox.Show("Введённые данные имеют неверный формат!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             //Если добавляем новую запись
             if (isInsert)
             {
                 if (MessageBox.Show("Добавить данные в базу данных?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MySqlCommand command = new MySqlCommand("INSERT INTO sowing (plant_id, seed_source, sowing_date, seeds_count, pest_control, " +
-                    "harvesting) VALUES (@plantid, @seedsurce, @sowingdate, @seedscount, @pestcontrol, @harvesting)", db.GetConnection());
-
-                    command.Parameters.Add("@plantid", MySqlDbType.Int32).Value = Row6;
-                    command.Parameters.Add("@seedsurce", MySqlDbType.VarChar).Value = Row1;
-                    command.Parameters.Add("@sowingdate", MySqlDbType.DateTime).Value = Row2;
-                    command.Parameters.Add("@seedscount", MySqlDbType.Int32).Value = Row3;
-                    command.Parameters.Add("@pestcontrol", MySqlDbType.Byte).Value = Row4;
-                    command.Parameters.Add("@harvesting", MySqlDbType.DateTime).Value = Row5;
-
-                    db.OpenConnection();
-
-                    if (command.ExecuteNonQuery() == 1)
-                        MessageBox.Show("Запись успешно добавлена.");
-                    else
-                        MessageBox.Show("Ошибка! Запись не была создана.");
-
-                    db.CloseConnection();
-
-                    tabCommands.SelectedIndex = 0;
-
-                    preloadPage.Sowingbtn_Click(this, e);
+                    InsertData("добавлена");
                 }
             }
             else
@@ -232,39 +223,35 @@ namespace AgricultureApp.Pages
                 if (FieldEmpty()) return;
                 else if (MessageBox.Show("Изменить данные в базе данных?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MySqlCommand commandDeleted = new MySqlCommand("DELETE FROM sowing WHERE sowing_id = @indexDeletedRow", db.GetConnection());
-                    commandDeleted.Parameters.Add("@indexDeletedRow", MySqlDbType.Int32).Value =
-                        dataGridViewSowing.Rows[dataGridViewSowing.CurrentCell.RowIndex].Cells["sowing_id"].Value;
-
-                    loadDataAdapter.SelectCommand = commandDeleted;
-                    loadDataAdapter.Fill(dataSet, "Sowing");
-                    dataSet.Clear();
-                    LoadData();
-
-                    MySqlCommand command = new MySqlCommand("INSERT INTO sowing (plant_id, seed_source, sowing_date, seeds_count, pest_control, " +
-                    "harvesting) VALUES (@plantidEdit, @seedsourceEdit, @sowingdateEdit, @seedscountEdit, @pestcontrolEdit, @harvestingEdit)", db.GetConnection());
-                    //TODO: Убрать повторение кода
-                    command.Parameters.Add("@plantidEdit", MySqlDbType.Int32).Value = Row6;
-                    command.Parameters.Add("@seedsourceEdit", MySqlDbType.VarChar).Value = Row1;
-                    command.Parameters.Add("@sowingdateEdit", MySqlDbType.DateTime).Value = Row2;
-                    command.Parameters.Add("@seedscountEdit", MySqlDbType.Int32).Value = Row3;
-                    command.Parameters.Add("@pestcontrolEdit", MySqlDbType.Byte).Value = Row4;
-                    command.Parameters.Add("@harvestingEdit", MySqlDbType.DateTime).Value = Row5;
-
-                    db.OpenConnection();
-
-                    if (command.ExecuteNonQuery() == 1)
-                        MessageBox.Show("Запись успешно изменена.");
-                    else
-                        MessageBox.Show("Ошибка! Запись не была изменена.");
-
-                    db.CloseConnection();
-
-                    tabCommands.SelectedIndex = 0;
-
-                    preloadPage.Sowingbtn_Click(this, e);
+                    DeleteRow();
+                    InsertData("изменена");
                 }
             }
+        }
+        private void InsertData(string InsertEdit)
+        {
+            MySqlCommand command = new MySqlCommand("INSERT INTO sowing (plant_id, seed_source, sowing_date, seeds_count, pest_control, " +
+                        "harvesting) VALUES (@plantid, @seedsurce, @sowingdate, @seedscount, @pestcontrol, @harvesting)", db.GetConnection());
+
+            command.Parameters.Add("@plantid", MySqlDbType.Int32).Value = Row6;
+            command.Parameters.Add("@seedsurce", MySqlDbType.VarChar).Value = Row1;
+            command.Parameters.Add("@sowingdate", MySqlDbType.DateTime).Value = Row2;
+            command.Parameters.Add("@seedscount", MySqlDbType.Int32).Value = Row3;
+            command.Parameters.Add("@pestcontrol", MySqlDbType.Byte).Value = Row4;
+            command.Parameters.Add("@harvesting", MySqlDbType.DateTime).Value = Row5;
+
+            db.OpenConnection();
+
+            if (command.ExecuteNonQuery() == 1)
+                MessageBox.Show("Запись успешно "+ InsertEdit + ".");
+            else
+                MessageBox.Show("Ошибка! Запись не была создана.");
+
+            db.CloseConnection();
+
+            tabCommands.SelectedIndex = 0;
+
+            preloadPage.Sowingbtn_Click(this, e);
         }
         //Проверка на пустые поля
         private bool FieldEmpty()
@@ -292,6 +279,16 @@ namespace AgricultureApp.Pages
             //Чтобы определить выбраное растения уже созданной посевной, создадим sql запрос, с существующими
             GetExistingSowing();
 
+            int indexSelect = 0;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                if (table.Rows[i][0].ToString() == dataGridViewSowing.Rows[dataGridViewSowing.CurrentCell.RowIndex].Cells["title_plant"].Value.ToString())
+                {
+                    indexSelect = i;
+                }
+            }
+
+            plantidDropdown.SelectedIndex = indexSelect;
             row1.Text = Convert.ToString(dataGridViewSowing.Rows[dataGridViewSowing.CurrentCell.RowIndex].Cells["seed_source"].Value);
             sowingdateDate.Value = Convert.ToDateTime(dataGridViewSowing.Rows[dataGridViewSowing.CurrentCell.RowIndex].Cells["sowing_date"].Value);
             row3.Text = Convert.ToString(dataGridViewSowing.Rows[dataGridViewSowing.CurrentCell.RowIndex].Cells["seeds_count"].Value);
@@ -313,49 +310,48 @@ namespace AgricultureApp.Pages
         }
         #endregion
 
-        /*#region dataSearch
+        #region dataSearch
         private void Searchbtn_Click(object sender, EventArgs e)
         {
-           if (string.IsNullOrEmpty(textSearch.Text))
-           {
-               MessageBox.Show("Поле поиска пусто!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               return;
-           }
-           if (textSearch.Text.Contains(','))
-           {
-               MessageBox.Show("Недопустимый символ, Запятая, воспользуйтесь для поиска Точкой!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               return;
-           }
-           MySqlCommand command = new MySqlCommand("Select * FROM workers WHERE worker_id LIKE '%" + textSearch.Text +
-               "%' OR name LIKE '%" + textSearch.Text + "%' OR surname LIKE '%" + textSearch.Text + "%' OR fathername LIKE '%" +
-               textSearch.Text + "%' OR age LIKE '%" + textSearch.Text + "%' OR experience LIKE '%" + textSearch.Text +
-               "%' OR job_title LIKE '%" + textSearch.Text + "%' OR salary LIKE '%" + textSearch.Text + "%' OR ground_id LIKE '%" +
-               textSearch.Text + "%'", db.GetConnection());
+            if (string.IsNullOrEmpty(textSearch.Text))
+            {
+                MessageBox.Show("Поле поиска пусто!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (textSearch.Text.Contains(','))
+            {
+                MessageBox.Show("Недопустимый символ, Запятая, воспользуйтесь для поиска Точкой!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MySqlCommand command = new MySqlCommand("Select sowing_id, plants.title_plant, seed_source, sowing_date, seeds_count, " +
+                "pest_control, harvesting, plants.yield_plant FROM sowing JOIN plants ON sowing.plant_id = plants.plant_id WHERE " +
+                "sowing.sowing_id LIKE '%" + textSearch.Text + "%' OR sowing.seed_source LIKE '%" + textSearch.Text + "%' " +
+                "OR sowing.seeds_count LIKE '%" + textSearch.Text + "%' OR sowing.pest_control LIKE '%" + 
+                textSearch.Text + "%' OR plants.title_plant LIKE '%" + textSearch.Text +
+                "%' OR plants.yield_plant LIKE '%" + textSearch.Text + "%'", db.GetConnection());
 
-           adapter.SelectCommand = command;
-           table = new DataTable();
-           adapter.Fill(table);
-           dataGridViewWorker.DataSource = table;
+            loadDataAdapter.SelectCommand = command;
+            table = new DataTable();
+            loadDataAdapter.Fill(table);
+            dataGridViewSowing.DataSource = table;
         }
         private void TextSearch_KeyDown(object sender, KeyEventArgs e)
         {
-           if (e.KeyCode == Keys.Enter)
-           {
-               Searchbtn_Click(sender, e);
-           }
+            if (e.KeyCode == Keys.Enter)
+            {
+                Searchbtn_Click(sender, e);
+            }
         }
         private void TextSearch_TextChanged(object sender, EventArgs e)
         {
-           if (textSearch.Text == string.Empty)
-           {
-               MySqlCommand command = new MySqlCommand("Select * FROM workers", db.GetConnection());
-
-               adapter.SelectCommand = command;
-               table = new DataTable();
-               adapter.Fill(table);
-               dataGridViewWorker.DataSource = table;
-           }
+            if (textSearch.Text == string.Empty)
+            {
+                dataGridViewSowing.DataSource = dataSet.Tables["Sowing"];
+                dataGridViewSowing.Columns["plant_id"].Visible = false;
+                dataGridViewSowing.Columns["image_plant"].Visible = false;
+                preloadPage.Sowingbtn_Click(this, e);
+            }
         }
-        #endregion*/
+        #endregion
     }
 }

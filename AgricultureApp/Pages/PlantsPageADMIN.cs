@@ -167,7 +167,6 @@ namespace AgricultureApp.Pages
                 return;
             }
 
-
             if (!isThereAPicture)
                 Row5 = null;
             else

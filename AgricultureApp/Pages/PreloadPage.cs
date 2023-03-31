@@ -470,7 +470,7 @@ namespace AgricultureApp
                 userProfileTimer.Start();
             }
         }
-        private void Usersbtn_Click(object sender, EventArgs e)
+        public void Usersbtn_Click(object sender, EventArgs e)
         {
             PanelForm(new UsersPageADMIN(this));
             ChoisePage("userspage");

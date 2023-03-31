@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SowingPageADMIN));
             this.tabCommands = new System.Windows.Forms.TabControl();
             this.dataList = new System.Windows.Forms.TabPage();
@@ -46,6 +46,7 @@
             this.textSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataInsert = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.plantidPanel = new System.Windows.Forms.Panel();
             this.plantid = new System.Windows.Forms.Label();
             this.plantidContainer = new System.Windows.Forms.Panel();
@@ -75,7 +76,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.plantimageEdit = new System.Windows.Forms.PictureBox();
+            this.imageplant1 = new System.Windows.Forms.Label();
+            this.imageplantPanel = new System.Windows.Forms.Panel();
             this.tabCommands.SuspendLayout();
             this.dataList.SuspendLayout();
             this.imageplantContainer.SuspendLayout();
@@ -96,6 +99,8 @@
             this.seedsourceContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plantimageEdit)).BeginInit();
+            this.imageplantPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCommands
@@ -162,25 +167,25 @@
             this.dataGridViewSowing.AllowUserToDeleteRows = false;
             this.dataGridViewSowing.AllowUserToResizeColumns = false;
             this.dataGridViewSowing.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.MediumAquamarine;
-            this.dataGridViewSowing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.MediumAquamarine;
+            this.dataGridViewSowing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewSowing.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSowing.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridViewSowing.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSowing.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewSowing.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.MediumSeaGreen;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.MediumAquamarine;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSowing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MediumAquamarine;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSowing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewSowing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSowing.EnableHeadersVisualStyles = false;
             this.dataGridViewSowing.GridColor = System.Drawing.Color.MediumSeaGreen;
@@ -189,20 +194,20 @@
             this.dataGridViewSowing.Name = "dataGridViewSowing";
             this.dataGridViewSowing.ReadOnly = true;
             this.dataGridViewSowing.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.MediumSeaGreen;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Thistle;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSowing.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSowing.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewSowing.RowHeadersVisible = false;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.MediumAquamarine;
-            this.dataGridViewSowing.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.MediumAquamarine;
+            this.dataGridViewSowing.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewSowing.RowTemplate.Height = 40;
             this.dataGridViewSowing.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewSowing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -256,6 +261,7 @@
             this.Searchbtn.TabIndex = 2;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = false;
+            this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
             // 
             // textSearch
             // 
@@ -264,6 +270,8 @@
             this.textSearch.Name = "textSearch";
             this.textSearch.Size = new System.Drawing.Size(333, 29);
             this.textSearch.TabIndex = 1;
+            this.textSearch.TextChanged += new System.EventHandler(this.TextSearch_TextChanged);
+            this.textSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextSearch_KeyDown);
             // 
             // label2
             // 
@@ -277,6 +285,7 @@
             // 
             // dataInsert
             // 
+            this.dataInsert.Controls.Add(this.imageplantPanel);
             this.dataInsert.Controls.Add(this.label3);
             this.dataInsert.Controls.Add(this.plantidPanel);
             this.dataInsert.Controls.Add(this.harvestingtimePanel);
@@ -294,12 +303,21 @@
             this.dataInsert.Text = "Grounds detail";
             this.dataInsert.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(952, 520);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(162, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "no plant record, no record added";
+            // 
             // plantidPanel
             // 
             this.plantidPanel.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.plantidPanel.Controls.Add(this.plantid);
             this.plantidPanel.Controls.Add(this.plantidContainer);
-            this.plantidPanel.Location = new System.Drawing.Point(869, 283);
+            this.plantidPanel.Location = new System.Drawing.Point(595, 283);
             this.plantidPanel.Name = "plantidPanel";
             this.plantidPanel.Size = new System.Drawing.Size(268, 157);
             this.plantidPanel.TabIndex = 8;
@@ -372,7 +390,7 @@
             this.harvestingtimePanel.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.harvestingtimePanel.Controls.Add(this.harvestingdate);
             this.harvestingtimePanel.Controls.Add(this.harvestingtimeContainer);
-            this.harvestingtimePanel.Location = new System.Drawing.Point(454, 283);
+            this.harvestingtimePanel.Location = new System.Drawing.Point(319, 283);
             this.harvestingtimePanel.Name = "harvestingtimePanel";
             this.harvestingtimePanel.Size = new System.Drawing.Size(268, 157);
             this.harvestingtimePanel.TabIndex = 15;
@@ -510,7 +528,7 @@
             this.seedscountPanel.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.seedscountPanel.Controls.Add(this.seedscount);
             this.seedscountPanel.Controls.Add(this.seedscountContainer);
-            this.seedscountPanel.Location = new System.Drawing.Point(869, 33);
+            this.seedscountPanel.Location = new System.Drawing.Point(595, 33);
             this.seedscountPanel.Name = "seedscountPanel";
             this.seedscountPanel.Size = new System.Drawing.Size(268, 157);
             this.seedscountPanel.TabIndex = 7;
@@ -548,7 +566,7 @@
             this.sowingdatePanel.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.sowingdatePanel.Controls.Add(this.sowingdate);
             this.sowingdatePanel.Controls.Add(this.sowingdateContainer);
-            this.sowingdatePanel.Location = new System.Drawing.Point(454, 33);
+            this.sowingdatePanel.Location = new System.Drawing.Point(319, 33);
             this.sowingdatePanel.Name = "sowingdatePanel";
             this.sowingdatePanel.Size = new System.Drawing.Size(268, 157);
             this.sowingdatePanel.TabIndex = 7;
@@ -691,14 +709,36 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Sowing";
             // 
-            // label3
+            // plantimageEdit
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(952, 520);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "no plant record, no record added";
+            this.plantimageEdit.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.plantimageEdit.Location = new System.Drawing.Point(9, 56);
+            this.plantimageEdit.Name = "plantimageEdit";
+            this.plantimageEdit.Size = new System.Drawing.Size(247, 247);
+            this.plantimageEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.plantimageEdit.TabIndex = 1;
+            this.plantimageEdit.TabStop = false;
+            // 
+            // imageplant1
+            // 
+            this.imageplant1.AutoSize = true;
+            this.imageplant1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.imageplant1.ForeColor = System.Drawing.Color.White;
+            this.imageplant1.Location = new System.Drawing.Point(49, 14);
+            this.imageplant1.Name = "imageplant1";
+            this.imageplant1.Size = new System.Drawing.Size(159, 37);
+            this.imageplant1.TabIndex = 0;
+            this.imageplant1.Text = "Image plant";
+            // 
+            // imageplantPanel
+            // 
+            this.imageplantPanel.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.imageplantPanel.Controls.Add(this.plantimageEdit);
+            this.imageplantPanel.Controls.Add(this.imageplant1);
+            this.imageplantPanel.Location = new System.Drawing.Point(890, 75);
+            this.imageplantPanel.Name = "imageplantPanel";
+            this.imageplantPanel.Size = new System.Drawing.Size(268, 314);
+            this.imageplantPanel.TabIndex = 14;
             // 
             // SowingPageADMIN
             // 
@@ -744,6 +784,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plantimageEdit)).EndInit();
+            this.imageplantPanel.ResumeLayout(false);
+            this.imageplantPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -793,5 +836,8 @@
         private System.Windows.Forms.Panel plantidContainer;
         private Bunifu.UI.WinForms.BunifuDropdown plantidDropdown;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel imageplantPanel;
+        private System.Windows.Forms.PictureBox plantimageEdit;
+        private System.Windows.Forms.Label imageplant1;
     }
 }

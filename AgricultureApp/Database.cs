@@ -11,6 +11,7 @@ namespace AgricultureApp
     internal class Database
     {
         MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;database=agriculture_database;username=root;password=root;");
+        
         public void OpenConnection()
         { 
             if(connection.State == System.Data.ConnectionState.Closed)
