@@ -66,15 +66,20 @@ namespace AgricultureApp.Pages
             preloadPage.SetRoundedShape(groundidContainer, 10);
             preloadPage.SetRoundedShape(groundidPanel, 10);
 
-            dataGridViewWorker.Columns[0].HeaderText = "Worker Id";
-            dataGridViewWorker.Columns[1].HeaderText = "Name";
-            dataGridViewWorker.Columns[2].HeaderText = "Surname";
-            dataGridViewWorker.Columns[3].HeaderText = "Fathername";
-            dataGridViewWorker.Columns[4].HeaderText = "Age";
-            dataGridViewWorker.Columns[5].HeaderText = "Experience (years)";
-            dataGridViewWorker.Columns[6].HeaderText = "Job title";
-            dataGridViewWorker.Columns[7].HeaderText = "Salary (rub)";
-            dataGridViewWorker.Columns[8].HeaderText = "Ground Id";
+            dataGridViewWorker.Columns[0].HeaderText = "Номер";
+            dataGridViewWorker.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewWorker.Columns[1].HeaderText = "Имя";
+            dataGridViewWorker.Columns[2].HeaderText = "Фамилия";
+            dataGridViewWorker.Columns[3].HeaderText = "Отчество";
+            dataGridViewWorker.Columns[4].HeaderText = "Возраст";
+            dataGridViewWorker.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewWorker.Columns[5].HeaderText = "Опыт работы";
+            dataGridViewWorker.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewWorker.Columns[6].HeaderText = "Должность";
+            dataGridViewWorker.Columns[7].HeaderText = "Зарплата";
+            dataGridViewWorker.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewWorker.Columns[8].HeaderText = "Номер поля";
+            dataGridViewWorker.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void WorkersPageADMIN_Load(object sender, EventArgs e)
         {

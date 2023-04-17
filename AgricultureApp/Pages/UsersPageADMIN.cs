@@ -87,12 +87,17 @@ namespace AgricultureApp.Pages
         //Задаёт альтернативные названия для ячеек
         private void SetColumnsName()
         {
-            dataGridViewUsers.Columns[0].HeaderText = "User Id";
-            dataGridViewUsers.Columns[1].HeaderText = "Fullname";
-            dataGridViewUsers.Columns[2].HeaderText = "Username";
-            dataGridViewUsers.Columns[3].HeaderText = "Email";
-            dataGridViewUsers.Columns[4].HeaderText = "Password";
-            dataGridViewUsers.Columns[5].HeaderText = "Role";
+            dataGridViewUsers.Columns[0].HeaderText = "Номер";
+            dataGridViewUsers.Columns[0].Width = 80;
+            dataGridViewUsers.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewUsers.Columns[1].HeaderText = "ФИО";
+            dataGridViewUsers.Columns[2].HeaderText = "Логин";
+            dataGridViewUsers.Columns[2].Width = 120;
+            dataGridViewUsers.Columns[3].HeaderText = "Почта";
+            dataGridViewUsers.Columns[4].HeaderText = "Пароль";
+            dataGridViewUsers.Columns[4].Width = 120;
+            dataGridViewUsers.Columns[5].HeaderText = "Роль";
+            dataGridViewUsers.Columns[5].Width = 80;
         }
         //Отображение картинки (готовая картинка - bitmap)
         private void DataGridViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -27,7 +27,6 @@ namespace AgricultureApp.Pages
         DataTable table = new DataTable();
         MySqlCommandBuilder builder = new MySqlCommandBuilder();
         DataSet dataSet = new DataSet();
-
         private void LoadData()
         {
             try
@@ -54,9 +53,12 @@ namespace AgricultureApp.Pages
             preloadPage.SetRoundedShape(landAreaContainer, 10);
             preloadPage.SetRoundedShape(landAreaPanel, 10);
 
-            dataGridView1.Columns[0].HeaderText = "Ground Id";
-            dataGridView1.Columns[1].HeaderText = "Ground Number (№)";
-            dataGridView1.Columns[2].HeaderText = "Land Area (ha)";
+            dataGridView1.Columns[0].HeaderText = "Номер";
+            dataGridView1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[1].HeaderText = "Номер поля";
+            dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[2].HeaderText = "Площадь поля";
+            dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void UpdateDataWorker()
         {

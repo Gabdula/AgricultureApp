@@ -72,12 +72,15 @@ namespace AgricultureApp.Pages
             preloadPage.SetRoundedShape(imageplantPanel, 10);
             #endregion
 
-            dataGridViewPlants.Columns[0].HeaderText = "Plant Id";
-            dataGridViewPlants.Columns[1].HeaderText = "Title plant";
-            dataGridViewPlants.Columns[2].HeaderText = "Type plant";
-            dataGridViewPlants.Columns[3].HeaderText = "Growing time (days)";
-            dataGridViewPlants.Columns[4].HeaderText = "Yield plant";
-            dataGridViewPlants.Columns[5].HeaderText = "Image plant";
+            dataGridViewPlants.Columns[0].HeaderText = "Номер";
+            dataGridViewPlants.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewPlants.Columns[1].HeaderText = "Название";
+            dataGridViewPlants.Columns[2].HeaderText = "Тип";
+            dataGridViewPlants.Columns[3].HeaderText = "Время роста";
+            dataGridViewPlants.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewPlants.Columns[4].HeaderText = "Плодоносность";
+            dataGridViewPlants.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewPlants.Columns[5].HeaderText = "Изображение";
 
             dataGridViewPlants.Columns["image_plant"].Visible= false;
             DataGridViewPlants_CellClick(this, e);

@@ -80,7 +80,8 @@ namespace AgricultureApp.Pages
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand($"SELECT * FROM `users` WHERE `username` = @userlogin OR `email` = @userlogin AND `password` = @userpassword", db.GetConnection());
+            MySqlCommand command = new MySqlCommand($"SELECT * FROM `users` WHERE `username` = " +
+                $"@userlogin OR `email` = @userlogin AND `password` = @userpassword", db.GetConnection());
             command.Parameters.Add("@userlogin", MySqlDbType.VarChar).Value = loginUser;
             command.Parameters.Add("@userpassword", MySqlDbType.VarChar).Value = passUser;
 

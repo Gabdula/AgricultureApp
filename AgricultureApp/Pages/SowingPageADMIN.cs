@@ -91,14 +91,20 @@ namespace AgricultureApp.Pages
         //Задаёт альтернативные названия для ячеек
         private void SetColumnsName()
         {
-            dataGridViewSowing.Columns[0].HeaderText = "Sowing Id";
-            dataGridViewSowing.Columns[1].HeaderText = "Title plant";
-            dataGridViewSowing.Columns[2].HeaderText = "Seed source";
-            dataGridViewSowing.Columns[3].HeaderText = "Sowing date";
-            dataGridViewSowing.Columns[4].HeaderText = "Seeds count";
-            dataGridViewSowing.Columns[5].HeaderText = "Pest control";
-            dataGridViewSowing.Columns[6].HeaderText = "Harvesting date";
-            dataGridViewSowing.Columns[7].HeaderText = "Yield plant";
+            dataGridViewSowing.Columns[0].HeaderText = "Номер";
+            dataGridViewSowing.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSowing.Columns[1].HeaderText = "Название";
+            dataGridViewSowing.Columns[2].HeaderText = "Откуда привезено";
+            dataGridViewSowing.Columns[3].HeaderText = "Дата посева";
+            dataGridViewSowing.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSowing.Columns[4].HeaderText = "Количество семян";
+            dataGridViewSowing.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSowing.Columns[5].HeaderText = "Защита от вредителей";
+            dataGridViewSowing.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSowing.Columns[6].HeaderText = "Сбор урожая";
+            dataGridViewSowing.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSowing.Columns[7].HeaderText = "Плодоно- сность";
+            dataGridViewSowing.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         //Отображение картинки (готовая картинка - bitmap)
         private void DataGridViewSowing_CellClick(object sender, DataGridViewCellEventArgs e)
